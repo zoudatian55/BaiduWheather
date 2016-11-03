@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="city"
+            type="material.danny_jiang.com.baiduweatherdemo.model.CityModel" />
+
+        <variable
+            name="activity"
+            type="material.danny_jiang.com.baiduweatherdemo.MainActivity" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:afterTextChanged="@{(s) -> city.setCityName(s.toString())}"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(v) -> activity.btnClicked(v, city.cityName)}"
+                android:text="GET" />
+
+        </LinearLayout>
+
+        <!--<ListView-->
+            <!--android:id="@+id/list_Main"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+
+        <!--添加带有下来刷新功能的ListView-->
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/list_Main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>
